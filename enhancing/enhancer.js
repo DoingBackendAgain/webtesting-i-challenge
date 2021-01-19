@@ -3,10 +3,11 @@ module.exports = {
   fail,
   repair,
   get,
+  sum,
 };
 
 function success(item) {
-  return { ...item };
+  return {...item};
 }
 
 function fail(item) {
@@ -14,11 +15,18 @@ function fail(item) {
 }
 
 function repair(item) {
-  return { ...item };
-}
+  if (item.slice(1).indexOf(0) > -1) {
+    throw new Error("Can not divide by 0")
+  }
+  return item.slice(1).reduce((a,b)=> a/b, item[0] || 0)
+};
 
 function get(item) {
   return { ...item };
+}
+
+function sum(a,b){
+  return a+b
 }
 
 
