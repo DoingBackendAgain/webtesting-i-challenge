@@ -7,18 +7,47 @@ module.exports = {
 };
 
 function success(item) {
-  return {...item};
+  let enhancement = item.enhancement
+  // if (item.enhancement < 20){
+  //   enhancement += 1
+  // }
+  return {...item,
+     enhancement: item.enhancement < 20 ? item.enhancement + 1 : 20
+    };
+  
 }
+// another way to view this problem
+// it's expecting to return an object with 3 days and values
+// function success(item){
+//   const newObject = {}
+
+//   if(item.enhancement < 20){
+//       newObject.enhancement = item.enhancement +1
+//   } else {
+//       newObject.enhancement = item.enhancement
+//   }
+//   return newObject
+// }
+
 
 function fail(item) {
-  return { ...item };
+  let durability = item.durability
+  let enhancement = item.enhancement 
+   if (enhancement < 15){
+     durability -=5
+   } else if (enhancement > 16){
+     enhancement -= 1, 
+     durablity -=10
+   } else {
+     durability -= 10
+   }
+  return { ...item,  durability, enhancement };
 }
 
 function repair(item) {
-  if (item.slice(1).indexOf(0) > -1) {
-    throw new Error("Can not divide by 0")
-  }
-  return item.slice(1).reduce((a,b)=> a/b, item[0] || 0)
+ durability = 100
+ 
+ return {...item, durability}
 };
 
 function get(item) {

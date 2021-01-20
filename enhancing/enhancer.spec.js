@@ -16,6 +16,30 @@ test("adds numbers together", () => {
 
     
 test("repair", () => {
-    expect(enhancer.repair(200,2)).toBe(100)
+   const data = {durability: 80}
+   const res = enhancer.repair(data)
+   expect(res).toEqual({ durability : 100})
+   expect(data).toEqual({ durability : 80})
 })
+
+test("success", () => {
+    const res = enhancer.success({ enhancement: 1})
+    expect(res).toEqual({enhancement: 2})
+})
+
+test("success", () => {
+    const data = { enhancement: 1}
+    const res = enhancer.success(data)
+    expect(res).toEqual({enhancement: 2})
+    expect(data).toEqual({enhancement:1})
+})
+
+test("fail", ()=> {
+    const data = { enhancement: 14, durability: 10}
+    const res = enhancer.fail(data)
+    expect(res).toEqual({durability: 5, enhancement: 14})
+    expect(data).toEqual({durability: 10, enhancement: 14})
+})
+
+
 
