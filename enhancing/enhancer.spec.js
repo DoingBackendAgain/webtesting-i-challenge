@@ -39,6 +39,13 @@ test("fail", ()=> {
     const res = enhancer.fail(data)
     expect(res).toEqual({durability: 5, enhancement: 14})
     expect(data).toEqual({durability: 10, enhancement: 14})
+});
+
+test("get", ()=> {
+    const data = {name: "Sebastian", enhancement: 1}
+    const res = enhancer.get(data)
+    expect(res).toEqual({ name: "[+1] Sebastian", enhancement: 1})
+    expect(data).toEqual({ name: "Sebastian", enhancement: 1})
 })
 
 

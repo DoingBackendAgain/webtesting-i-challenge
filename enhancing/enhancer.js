@@ -51,7 +51,12 @@ function repair(item) {
 };
 
 function get(item) {
-  return { ...item };
+  let enhancement = item.enhancement
+  let name = item.name
+  if(enhancement > 0){
+    name = `[+${enhancement} ${name}]`
+  }
+  return { ...item, enhancement, name };
 }
 
 function sum(a,b){
